@@ -1,0 +1,27 @@
+version: 4.2.13
+session: 67cb6b7e969d7bd391f818ca
+steps:
+  - prompt: Click on the "Start Building" button.
+    commands:
+      - command: hover-text
+        text: Start Building
+        description: button to begin building on the platform
+        action: click
+  - prompt: Assert that the user is redirected to the appropriate page.
+    commands:
+      - command: assert
+        expect: Register for free
+  - prompt: Verify that the page loads without errors.
+    commands:
+      - command: assert
+        expect: Try our APIs for free
+  - prompt: >-
+      Assert that the main elements of the page are displayed correctly.  # Use
+      the content of the file from the environment
+    commands:
+      - command: assert
+        expect: Register for free
+      - command: assert
+        expect: Try our APIs for free
+      - command: assert
+        expect: No credit card required
