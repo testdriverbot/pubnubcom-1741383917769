@@ -1,0 +1,63 @@
+version: 4.2.13
+session: 67cb6b77d07e71bfd53a6bc4
+steps:
+  - prompt: Observe the cookie consent banner.
+    commands:
+      - command: hover-text
+        text: Accept Cookies
+        description: button on the cookie consent banner
+        action: hover
+  - prompt: Click the "Accept Cookies" button.
+    commands:
+      - command: hover-text
+        text: Accept Cookies
+        description: button on the cookie consent banner
+        action: click
+  - prompt: Assert that the banner disappears.
+    commands:
+      - command: assert
+        expect: the cookie consent banner is not visible
+  - prompt: Check that the cookie preference is remembered on page reload.
+    commands:
+      - command: press-keys
+        keys:
+          - control
+          - r
+      - command: wait
+        timeout: 5000
+      - command: assert
+        expect: the cookie consent banner is not visible
+  - prompt: >-
+      Verify "Privacy Policy" and "Cookies Settings" links navigate correctly. 
+      # Use the content of the file from the environment
+    commands:
+      - command: scroll-until-text
+        text: Privacy Policy
+        direction: down
+        method: keyboard
+      - command: hover-text
+        text: Privacy Policy
+        description: link to the privacy policy page
+        action: click
+      - command: wait
+        timeout: 5000
+      - command: assert
+        expect: the Privacy Policy page is loaded
+      - command: press-keys
+        keys:
+          - alt
+          - left
+      - command: wait
+        timeout: 3000
+      - command: scroll-until-text
+        text: Cookies Settings
+        direction: down
+        method: keyboard
+      - command: hover-text
+        text: Cookies Settings
+        description: link to the cookies settings page
+        action: click
+      - command: wait
+        timeout: 5000
+      - command: assert
+        expect: the Cookies Settings page is loaded
