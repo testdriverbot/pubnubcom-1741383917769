@@ -1,0 +1,39 @@
+version: 4.2.13
+session: 67cb6b75969d7bd391f818bd
+steps:
+  - prompt: Click on the "Products" menu link.
+    commands:
+      - command: hover-text
+        text: Products
+        description: Products menu link in the navigation bar
+        action: click
+  - prompt: Assert that the products page loads correctly.
+    commands:
+      - command: assert
+        expect: PUBNUB PLATFORM is visible on the page
+  - prompt: Click on the "Solutions" menu link.
+    commands:
+      - command: hover-text
+        text: Solutions
+        description: Solutions menu link in the navigation bar
+        action: click
+  - prompt: Assert that the solutions page loads correctly.
+    commands:
+      - command: assert
+        expect: BY USE CASE is visible on the page
+  - prompt: >-
+      Repeat for "Pricing", "Developers", and "Resources".  # Use the content of
+      the file from the environment
+    commands:
+      - command: hover-text
+        text: Pricing
+        description: Pricing menu link in the navigation bar
+        action: click
+      - command: hover-text
+        text: Developers
+        description: Developers menu link in the navigation bar
+        action: click
+      - command: hover-text
+        text: Resources
+        description: Resources menu link in the navigation bar
+        action: click
